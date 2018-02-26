@@ -16,6 +16,14 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.CHAR(255),
       allowNull: false
     },
+    create_time: {
+      type: DataTypes.CHAR(19),
+      allowNull: false
+    },
+    finish_time: {
+      type: DataTypes.CHAR(19),
+      allowNull: true
+    },
     status: {
       type: DataTypes.INTEGER(1),
       allowNull: false

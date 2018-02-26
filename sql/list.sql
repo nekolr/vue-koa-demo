@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `content` char(255) NOT NULL,
+  `create_time` char(19) NOT NULL,
+  `finish_time` char(19) NULL,
   `status` tinyint(1) unsigned zerofill NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;

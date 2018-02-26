@@ -8,6 +8,10 @@ export default function (sequelize, DataTypes) {
       primaryKey: true, // 主键
       autoIncrement: true // 是否自增
     },
+    head: {
+      type: DataTypes.STRING(512),
+      allowNull: true
+    },
     user_name: {
       type: DataTypes.CHAR(50),
       allowNull: false

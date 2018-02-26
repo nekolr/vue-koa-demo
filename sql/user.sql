@@ -19,6 +19,7 @@ USE `todolist`;
 -- 导出  表 todolist.user 结构
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `head` varchar(512) NULL,
   `user_name` char(50) NOT NULL,
   `password` char(128) NOT NULL,
   PRIMARY KEY (`id`)
@@ -27,10 +28,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- 正在导出表  todolist.user 的数据：~0 rows (大约)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`user_name`, `password`) VALUES
-	('molunerfinn', '$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6');
-INSERT INTO `user` (`user_name`, `password`) VALUES
-  ('admin', '$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6');
+INSERT INTO `user` (`user_name`, `password`, `head`) VALUES
+	('lulin', '$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6', 'https://avatars2.githubusercontent.com/u/20686737?s=460&v=4');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

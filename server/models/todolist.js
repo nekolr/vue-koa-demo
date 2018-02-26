@@ -9,7 +9,7 @@ const getTodolistById = async function (id) {
     where: {
       user_id: id
     },
-    attributes: ['id', 'content', 'status'] // 只需返回这三个字段的结果即可
+    attributes: ['id', 'content', 'status', 'create_time', 'finish_time'] // 只需返回这几个字段的结果即可
   })
 
   return todolist // 返回数据
@@ -19,7 +19,8 @@ const createTodolist = async function (data) {
   await Todolist.create({
     user_id: data.id,
     content: data.content,
-    status: data.status
+    status: data.status,
+    create_time: data.create_time
   })
   return true
 }
@@ -34,7 +35,7 @@ const removeTodolist = async function (id, userId) {
   return result === 1 // 如果成功删除了记录，返回1，否则返回0
 }
 
-const updateTodolist = async function (id, userId, status) {
+const updateTodolist = async function (id, userId, status, finishTime) {
   const result = await Todolist.update(
     {
       status
@@ -42,7 +43,8 @@ const updateTodolist = async function (id, userId, status) {
     {
       where: {
         id,
-        user_id: userId
+        user_id: userId,
+        finish_time: finishTime
       }
     }
   )

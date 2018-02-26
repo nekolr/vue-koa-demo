@@ -1,9 +1,10 @@
 <template>
   <el-row class="content">
+    <el-col><img :src="Head"></el-col>
     <el-col :xs="{span:20,offset:2}" :sm="{span:8,offset:8}">
-      <span>
+      <!-- <span>
         欢迎：{{name}}！你的待办事项是：
-      </span>
+      </span> -->
       <el-input placeholder="请输入待办事项" v-model="todos" @keyup.enter.native="addTodos"></el-input>
       <el-tabs v-model="activeName">
         <el-tab-pane label="待办事项" name="first">
@@ -58,15 +59,18 @@ export default {
     if (userInfo !== null) {
       this.id = userInfo.id
       this.name = userInfo.name
+      this.head = userInfo.head
     } else {
       this.id = ''
       this.name = ''
+      this.head = ''
     }
     this.getTodolist()
   },
   data () {
     return {
       name: '',
+      head: '',
       todos: '',
       activeName: 'first',
       list: [],
@@ -87,6 +91,9 @@ export default {
       } else {
         return false
       }
+    },
+    Head () {
+      return this.head === '' ? '../assets/logo.png' : this.head
     }
   },
 
@@ -98,7 +105,8 @@ export default {
       let obj = {
         status: false,
         content: this.todos,
-        id: this.id
+        id: this.id,
+        create_time: this.formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')
       }
       this.$http.post('/api/todolist', obj)
         .then((res) => {
@@ -174,6 +182,25 @@ export default {
           console.log(err)
         })
       return getTodolist
+    },
+    formatDate (date, fmt) {
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+      }
+      let o = {
+        'M+': date.getMonth() + 1,
+        'd+': date.getDate(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+      }
+      for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)) {
+          let str = o[k] + ''
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : ('00' + str).substr(str.length))
+        }
+      }
+      return fmt
     }
   }
 }

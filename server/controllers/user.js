@@ -19,6 +19,7 @@ const postUserAuth = async function (ctx) {
       }
     } else {
       const userToken = {
+        head: userInfo.head,
         name: userInfo.user_name,
         id: userInfo.id
       }
