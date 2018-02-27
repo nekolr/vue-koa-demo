@@ -38,13 +38,13 @@ const removeTodolist = async function (id, userId) {
 const updateTodolist = async function (id, userId, status, finishTime) {
   const result = await Todolist.update(
     {
-      status
+      status,
+      finish_time: finishTime
     },
     {
       where: {
         id,
-        user_id: userId,
-        finish_time: finishTime
+        user_id: userId
       }
     }
   )

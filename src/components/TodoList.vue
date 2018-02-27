@@ -16,6 +16,7 @@
                     {{ index + 1 }}. {{ item.content }}
                   </span>
                   <span class="pull-right">
+                    <el-tag size="mini" color="rgb(69, 189, 46)">{{ item.create_time }}</el-tag>
                     <el-button size="small" class="finish-item" type="primary" @click="update(index)">完成</el-button>
                     <el-button class="remove-item" size="small" :plain="true" type="danger" @click="remove(index)">删除</el-button>
                   </span>
@@ -35,6 +36,7 @@
                   {{ index + 1 }}. {{ item.content }}
                 </span>
                 <span class="pull-right">
+                  <el-tag size="mini" color="rgb(69, 189, 46)">{{ item.finish_time }}</el-tag>
                   <el-button size="small" class="restore-item" type="primary" @click="update(index)">还原</el-button>
                 </span>
               </div>

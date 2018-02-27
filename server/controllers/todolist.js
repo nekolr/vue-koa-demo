@@ -1,4 +1,5 @@
 import todolist from '../models/todolist.js'
+import dateutil from '../utils/dateutil.js'
 
 const getTodolist = async function (ctx) {
   const id = ctx.params.id // 获取url里传过来的参数里的id
@@ -31,9 +32,10 @@ const updateTodolist = async function (ctx) {
   const id = ctx.params.id
   const userId = ctx.params.userId
   let status = ctx.params.status
+  let finishTime = dateutil.formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')
   status === '0' ? status = true : status = false// 状态反转（更新）
 
-  const success = await todolist.updateTodolist(id, userId, status)
+  const success = await todolist.updateTodolist(id, userId, status, finishTime)
 
   ctx.body = {
     success

@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`user_name`, `password`, `head`) VALUES
-	('lulin', '$2a$10$x3f0Y2SNAmyAfqhKVAV.7uE7RHs3FDGuSYw.LlZhOFoyK7cjfZ.Q6', 'https://avatars2.githubusercontent.com/u/20686737?s=460&v=4');
+	('lulin', '$2a$10$KFojAAx7jNavfdPM9j85UOuE.nSTrSt5XCZKL4bGWx7I4a8IhkfXm', 'https://avatars2.githubusercontent.com/u/20686737?s=460&v=4');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
