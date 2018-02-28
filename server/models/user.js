@@ -24,7 +24,17 @@ const getUserByName = async function (name) {
   return userInfo
 }
 
+const addUser = async function (data) {
+  await User.create({
+    head: data.head,
+    user_name: data.name,
+    password: data.password
+  })
+  return true
+}
+
 export default {
   getUserById, // 导出getUserById的方法，将会在controller里调用
-  getUserByName
+  getUserByName,
+  addUser
 }

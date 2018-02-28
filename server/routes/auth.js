@@ -4,5 +4,6 @@ const router = koaRouter()
 
 router.get('/user/:id', auth.getUserInfo) // 定义url的参数是id
 router.post('/user', auth.postUserAuth)
+router.put('/user', auth.addUser)
 
 export default router

@@ -3,7 +3,7 @@
     <el-col><img src="../assets/logo.png"></el-col>
     <el-col :xs="24" :sm="{span: 6,offset: 9}">
       <span class="title">
-       <router-link :to='{name: "Login"}'>登录去</router-link>
+       <router-link :to='{name: "Login"}'>来嘛，登我 :)</router-link>
       </span>
       <el-row>
         <el-input
@@ -15,6 +15,12 @@
           v-model="password"
           placeholder="密码"
           type="password"
+          @keyup.enter.native="registerToDo">
+        </el-input>
+        <el-input
+          v-model="head"
+          placeholder="头像（URL），爱写不写"
+          type="head"
           @keyup.enter.native="registerToDo">
         </el-input>
         <el-button type="primary" @click="registerToDo">注册</el-button>
@@ -33,26 +39,33 @@ export default {
   },
   methods: {
     registerToDo () {
-      let obj = {
-        name: this.account,
-        password: this.password
-      }
-      const result = this.$http.post('/auth/user', obj) // 将信息发送给后端
-      result.then((res) => {
-        if (res.data.success) { // 如果成功
-          this.$message({ // 注册成功，显示提示语
-            type: 'success',
-            message: '注册成功！'
-          })
-          this.$router.push('/') // 进入登录页面
-        } else {
-          this.$message.error(res.data.info) // 登录失败，显示提示语
+      if (this.account === '' || this.password === '') {
+        this.$message({ // 注册成功，显示提示语
+          type: 'error',
+          message: '哼，休想骗我！'
+        })
+      } else {
+        let obj = {
+          name: this.account,
+          password: this.password
         }
-      }, (err) => {
-        console.log(err)
-        this.$message.error('请求错误！')
-      })
-      return result
+        const result = this.$http.put('/auth/user', obj) // 将信息发送给后端
+        result.then((res) => {
+          if (res.data.success) { // 如果成功
+            this.$message({ // 注册成功，显示提示语
+              type: 'success',
+              message: '注册成功！'
+            })
+            this.$router.push('/') // 进入登录页面
+          } else {
+            this.$message.error(res.data.info) // 注册失败，显示提示语
+          }
+        }, (err) => {
+          console.log(err)
+          this.$message.error('请求错误！')
+        })
+        return result
+      }
     }
   }
 }

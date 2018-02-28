@@ -38,7 +38,29 @@ const postUserAuth = async function (ctx) {
   }
 }
 
+const addUser = async function (ctx) {
+  const data = ctx.request.body // put过来的数据存在request.body里
+  const userInfo = await user.getUserByName(data.name)
+  if (userInfo == null) {
+    const hash = bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
+    const userEntity = {
+      name: data.name,
+      password: hash
+    }
+    const success = await user.addUser(userEntity)
+    ctx.body = {
+      success
+    }
+  } else {
+    ctx.body = {
+      success: false,
+      info: '用户已存在！' // 如果用户存在返回用户存在
+    }
+  }
+}
+
 export default {
   getUserInfo,
-  postUserAuth
+  postUserAuth,
+  addUser
 }

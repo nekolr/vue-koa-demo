@@ -3,7 +3,7 @@
     <el-col><img src="../assets/logo.png"></el-col>
     <el-col :xs="24" :sm="{span: 6,offset: 9}">
       <span class="title">
-       <router-link :to='{name: "Register"}'>不注册一下嘛</router-link>
+       <router-link :to='{name: "Register"}'>不注册一下嘛 :)</router-link>
       </span>
       <el-row>
         <el-input
