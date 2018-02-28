@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import Login from './components/Login'
 import TodoList from './components/TodoList'
+import Register from './components/Register'
 
 Vue.prototype.$http = axios // 类似于vue-resource的调用方法
 
@@ -20,11 +21,18 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
+      name: 'Login',
       component: Login
     },
     {
       path: '/todolist',
+      name: 'TodoList',
       component: TodoList
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '*',
@@ -40,6 +48,12 @@ router.beforeEach((to, from, next) => {
       next('/todolist') // 如果有token就转向todolist不返回登录页
     }
     next() // 否则跳转回登录页
+  } else if (to.path === '/register') {
+    if (token !== 'null' && token !== null) {
+      next('/todolist') // 如果有token就转向todolist
+    } else {
+      next()
+    }
   } else {
     if (token !== 'null' && token !== null) {
       Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token // 注意Bearer后有个空格

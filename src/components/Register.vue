@@ -3,7 +3,7 @@
     <el-col><img src="../assets/logo.png"></el-col>
     <el-col :xs="24" :sm="{span: 6,offset: 9}">
       <span class="title">
-       <router-link :to='{name: "Register"}'>不注册一下嘛</router-link>
+       <router-link :to='{name: "Login"}'>登录去</router-link>
       </span>
       <el-row>
         <el-input
@@ -15,9 +15,9 @@
           v-model="password"
           placeholder="密码"
           type="password"
-          @keyup.enter.native="loginToDo">
+          @keyup.enter.native="registerToDo">
         </el-input>
-        <el-button type="primary" @click="loginToDo">登录</el-button>
+        <el-button type="primary" @click="registerToDo">注册</el-button>
       </el-row>
     </el-col>
   </el-row>
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    loginToDo () {
+    registerToDo () {
       let obj = {
         name: this.account,
         password: this.password
@@ -40,20 +40,17 @@ export default {
       const result = this.$http.post('/auth/user', obj) // 将信息发送给后端
       result.then((res) => {
         if (res.data.success) { // 如果成功
-          sessionStorage.setItem('demo-token', res.data.token) // 用sessionStorage把token存下来
-          this.$message({ // 登录成功，显示提示语
+          this.$message({ // 注册成功，显示提示语
             type: 'success',
-            message: '登录成功！'
+            message: '注册成功！'
           })
-          this.$router.push('/todolist') // 进入todolist页面，登录成功
+          this.$router.push('/') // 进入登录页面
         } else {
           this.$message.error(res.data.info) // 登录失败，显示提示语
-          sessionStorage.setItem('demo-token', null) // 将token清空
         }
       }, (err) => {
         console.log(err)
         this.$message.error('请求错误！')
-        sessionStorage.setItem('demo-token', null) // 将token清空
       })
       return result
     }
