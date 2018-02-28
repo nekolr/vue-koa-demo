@@ -45,7 +45,8 @@ const addUser = async function (ctx) {
     const hash = bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
     const userEntity = {
       name: data.name,
-      password: hash
+      password: hash,
+      head: data.head
     }
     const success = await user.addUser(userEntity)
     ctx.body = {

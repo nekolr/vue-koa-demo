@@ -34,7 +34,8 @@ export default {
   data () {
     return {
       account: '',
-      password: ''
+      password: '',
+      head: ''
     }
   },
   methods: {
@@ -47,7 +48,8 @@ export default {
       } else {
         let obj = {
           name: this.account,
-          password: this.password
+          password: this.password,
+          head: this.head
         }
         const result = this.$http.put('/auth/user', obj) // 将信息发送给后端
         result.then((res) => {
