@@ -2,8 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import {
+  Row,
+  Col,
+  Input,
+  Button,
+  Tabs,
+  TabPane,
+  Tag
+} from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import Login from './components/Login'
@@ -12,7 +20,13 @@ import Register from './components/Register'
 
 Vue.prototype.$http = axios // 类似于vue-resource的调用方法
 
-Vue.use(ElementUI)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Tag)
 Vue.use(VueRouter)
 
 const router = new VueRouter({
