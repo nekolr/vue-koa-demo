@@ -9,7 +9,8 @@ import {
   Button,
   Tabs,
   TabPane,
-  Tag
+  Tag,
+  Message
 } from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
@@ -20,6 +21,12 @@ import Register from './components/Register'
 
 Vue.prototype.$http = axios // 类似于vue-resource的调用方法
 
+// 在调用 Vue.use 前，给 Message 添加 install 方法
+// Reference: <http://www.yukapril.com/2017/07/12/vue-elementui-message.html>
+Message.install = function (Vue, options) {
+  Vue.prototype.$message = Message
+}
+
 Vue.use(Row)
 Vue.use(Col)
 Vue.use(Input)
@@ -27,6 +34,7 @@ Vue.use(Button)
 Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Tag)
+Vue.use(Message)
 Vue.use(VueRouter)
 
 const router = new VueRouter({
