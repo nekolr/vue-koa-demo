@@ -17,8 +17,8 @@
                   </span>
                   <span class="pull-right">
                     <el-tag size="mini" type="success">{{ item.create_time }}</el-tag>
-                    <el-button size="small" class="finish-item" type="primary" @click="update(index)">完成</el-button>
-                    <el-button class="remove-item" size="small" :plain="true" type="danger" @click="remove(index)">删除</el-button>
+                    <el-button size="mini" class="finish-item" type="primary" @click="update(index)">完成</el-button>
+                    <el-button class="remove-item" size="mini" :plain="true" type="danger" @click="remove(index)">删除</el-button>
                   </span>
                 </div>
               </template> 
@@ -37,7 +37,7 @@
                 </span>
                 <span class="pull-right">
                   <el-tag size="mini" type="success">{{ item.finish_time }}</el-tag>
-                  <el-button size="small" class="restore-item" type="primary" @click="update(index)">还原</el-button>
+                  <el-button size="mini" class="restore-item" type="primary" @click="update(index)">还原</el-button>
                 </span>
               </div>
             </template> 
