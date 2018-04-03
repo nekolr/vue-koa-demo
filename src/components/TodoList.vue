@@ -13,7 +13,7 @@
               <template v-for="(item, index) in list">
                 <div class="todo-list" v-if="item.status == false" :key="index">
                   <span class="item no-finished">
-                    {{ index + 1 }}. {{ item.content }}
+                    {{ item.content }}
                   </span>
                   <span class="pull-right">
                     <el-tag size="mini" type="success">{{ item.create_time }}</el-tag>
@@ -33,7 +33,7 @@
             <template v-for="(item, index) in list">
               <div class="todo-list" v-if="item.status == true" :key="index">
                 <span class="item finished">
-                  {{ index + 1 }}. {{ item.content }}
+                  {{ item.content }}
                 </span>
                 <span class="pull-right">
                   <el-tag size="mini" type="success">{{ item.finish_time }}</el-tag>
