@@ -22,7 +22,7 @@ A fullstack demo used Vue2 & Koa2(Koa1 version is [here](https://github.com/Molu
   </a>
 </p>
 
-![Todolist](http://7xog0l.com1.z0.glb.clouddn.com/vue-koa-demo/todolist-5.gif 'todolist')
+![Todolist](https://github.com/nekolr/vue-koa-demo/blob/master/snapshot.gif 'todolist')
 
 View the [article](https://molunerfinn.com/Vue+Koa/) for more details.
 
